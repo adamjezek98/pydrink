@@ -1,0 +1,101 @@
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    margin: 15px;
+}
+
+h2 {
+    text-align: center;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("/webfiles/Roboto-Black.ttf");
+}
+
+body {
+    font-family: Roboto;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+
+}
+
+#wrapper {
+    display: flex;
+    /* Magic begins */
+    flex-wrap: wrap;
+    /* Allow multiple lines */
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+#wrapper > div > a > div {
+    flex: 1 1 0;
+    text-align: center;
+    min-width: 220px;
+    max-width: 220px;
+
+    min-height: 120px;
+    margin: 10px;
+
+    align-self: flex-start;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: hsla(207, 90%, 54%, 0.25);
+    line-height: 40px;
+
+    font-size: 1.5em;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.buttons_footer {
+    position: fixed;
+    bottom: 0px;
+    margin: 30px;
+    height: 60px;
+    padding-bottom: 30px
+}
+
+.button_left {
+    float: left;
+    position: fixed;
+    left: 0px;
+    width: 200px;
+    height: 120px;
+    text-align: center;
+    background: red;
+    font-size: 1.2em;
+    line-height: 120px;
+}
+
+.button_right {
+    float: right;
+    position: fixed;
+    right: 0px;
+    width: 200px;
+    height: 120px;
+    background: green;
+    font-size: 1.2em;
+    line-height: 120px;
+}
+
+.vertical_texet_center_parent {
+    display: table;
+    overflow: hidden;
+    text-align: center;
+}
+
+.vertical_texet_center_child {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+

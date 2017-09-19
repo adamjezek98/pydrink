@@ -1,0 +1,55 @@
+<h1><span style="font-size: 0.5em;">Making drink</span> %%drink_name%%</h1>
+
+<h2>Progress</h2>
+<progress value="0" max="100" style="margin: 20px; width: calc(100% - 50px); height:50px;color: blue;
+   -moz-linear-gradient(
+      135deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 66%,
+      transparent 66%
+    ),
+    -moz-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    -moz-linear-gradient(
+      left,
+      #09c,
+      #f44
+    );
+
+"></progress>
+
+
+<script type="text/javascript">
+
+    function refresh() {
+        req = new XMLHttpRequest();
+        req.open("POST", "/progress", true);
+        req.send("");
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                document.getElementsByTagName("progress")[0].value = req.responseText;
+                console.log(req.responseText);
+                if (req.responseText == 100) {
+                    console.log("done")
+                    window.location.href = "/drinkdone"
+                }
+                if (req.responseText == -1) {
+                    console.log("error")
+                    window.location.href = "/drinkerror"
+                }
+                setTimeout(refresh, 50);
+            }
+        }
+
+
+    }
+
+    setTimeout(refresh, 1000);
+
+
+</script>
+
