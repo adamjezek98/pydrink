@@ -139,7 +139,11 @@ class PyDrink(threading.Thread):
 
     def pour_drink(self, tap, amount):
         db = rootdb.Database("database.db")
-        self.move_cart_to_pos(db.get_tap_pos(tap))
+        _i = 1
+        while not self.move_cart_to_pos(db.get_tap_pos(tap)):
+            _i += 1
+            if _i > 3:
+                return self.states["NOK"]
         self.tare_scale()
         self.send_command("p" + str(tap - 1) + "1")
         self.read_reply(0.5)
