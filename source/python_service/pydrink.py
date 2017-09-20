@@ -161,7 +161,7 @@ class PyDrink(threading.Thread):
                 self.send_command("pa")
                 res = self.read_reply(1)
                 return self.states["DRINK_EMPTY"]
-            if w > parts:
+            if  False: #w > parts:
                 self.send_command("p" + str(tap - 1) + "0")
                 self.read_reply(0.5)
                 parts += 20
