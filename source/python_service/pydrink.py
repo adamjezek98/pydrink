@@ -103,7 +103,11 @@ class PyDrink(threading.Thread):
 
         time.sleep(0.2)
         self.flush_port()
-        self.send_command("m" + dir + str(abs(self.cart_position - pos)))
+        command = "m" + dir + str(abs(self.cart_position - pos))
+        while 1:
+            self.send_command("m" + dir + str(abs(self.cart_position - pos)))
+            if self.read_reply(2) == command:
+                break
         self.cart_position = pos
         res = self.read_reply(45)
         if res == "DONE":
