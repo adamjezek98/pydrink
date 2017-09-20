@@ -109,7 +109,7 @@ class PyDrink(threading.Thread):
             rep = self.read_reply(2)
             if rep:
                 rep = rep.replace("home","").replace("DONE","")
-            self.logger.info("sending "+command+", received "+rep)
+                self.logger.info("sending "+command+", received "+rep)
             if rep == command:
                 break
         self.cart_position = pos
