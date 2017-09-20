@@ -33,6 +33,11 @@ class PyDrink(threading.Thread):
         fh.setLevel(logging.DEBUG)
         formatter = logging.Formatter('%(asctime)s|%(name)s|%(levelname)s|%(message)s')
         fh.setFormatter(formatter)
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+        ch.setFormatter(formatter)
+
+        self.logger.addHandler(ch)
         self.logger.addHandler(fh)
 
     def prepare_run(self, action, params):
@@ -53,6 +58,7 @@ class PyDrink(threading.Thread):
     def send_command(self, command):
 
         try:
+            print("sending",command)
             self.flush_port()
             self.serial_port.write(bytes(command, "utf-8"))
             self.logger.info("Sent command " + command)
