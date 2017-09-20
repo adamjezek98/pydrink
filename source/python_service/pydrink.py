@@ -129,7 +129,7 @@ class PyDrink(threading.Thread):
         self.send_command("s")
         res = self.read_reply(1)
         if res:
-            res = res.replace("DONE", "")
+            res = res.replace("DONE", "").replace("s","")
             self.logger.info("Scale measure " + str(res))
             try:
                 return float(res)
